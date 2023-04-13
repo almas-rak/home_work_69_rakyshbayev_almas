@@ -1,6 +1,6 @@
 from django.urls import path
 
-from task1.api_calc import calc
+from webapp.api_calc import calc
 
 urlpatterns = [
     path('add/', calc, name='add'),

@@ -1,4 +1,4 @@
-const url = 'http://localhost:8000'
+const url = window.location.href
 let addBtn = $('#add');
 let subtractBtn = $('#subtract');
 let multiplyBtn = $('#multiply');
@@ -37,9 +37,11 @@ function add(a, b, oper) {
             xhr.setRequestHeader("X-CSRFToken", token);
         },
         success: function (data) {
+            result[0].style.color = 'green'
             result.text(`Результат: ${data.answer}`)
         },
         error: function (xhr, status, error) {
+            result[0].style.color = 'red'
             result.text(`Результат: ${xhr.responseJSON.error}`);
             console.log(xhr);
             console.log(status);

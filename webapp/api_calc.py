@@ -12,7 +12,7 @@ def calc(request: WSGIRequest, *args, **kwargs):
             a = int(data['A'])
             b = int(data['B'])
         except Exception:
-            response_data = {'detail': 'Некорректный набор данных'}
+            response_data = {'error': 'Некорректный набор данных'}
             response = JsonResponse(response_data)
             response.status_code = 400
             return response
@@ -34,7 +34,7 @@ def calc(request: WSGIRequest, *args, **kwargs):
         response = HttpResponse(answer_as_json, content_type='application/json')
         return response
     else:
-        response_data = {'detail': 'Некорректный набор данных'}
+        response_data = {'error': 'Некорректный набор данных'}
         response = JsonResponse(response_data)
         response.status_code = 400
         return response
